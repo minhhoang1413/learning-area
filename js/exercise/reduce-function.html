@@ -1,0 +1,7 @@
+<script>
+	function coffeeDate(coffeeArr){
+		let coffeSum = coffeeArr.reduce( (total, num) => total + num );
+		return `The total bill is ${coffeSum * 1.25}$`;
+	}
+	console.log(coffeeDate([2, 3, 1,5]));
+</script>

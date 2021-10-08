@@ -1,0 +1,15 @@
+<script>
+const username = Symbol("username");
+const password = Symbol("password");
+const user = {
+	[username] : "assd",
+	[password] : "asdasd",
+	age: 24,
+	test: function(){
+		return this[username];
+	}
+}
+console.log(user.username);
+console.log(user.test());
+console.log(user[username]);
+</script>

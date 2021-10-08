@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> </title>
+</head>
+<body>
+<ul></ul>
+<script>
+	function foodTruck(menus){
+		let flatMenus = menus.flat();
+		let combineMenu = new Set(flatMenus);
+		const menuNode = document.querySelector("ul");
+		for(let item of combineMenu){
+			let foodNode = document.createElement("li");
+			foodNode.textContent = item;
+			menuNode.appendChild(foodNode);
+		}
+	}
+	foodTruck([["Tacos","Burger"],"Pizza","Burger","Fries"]);
+</script>
+</body>
+</html>

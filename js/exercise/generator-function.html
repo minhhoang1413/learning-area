@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> </title>
+</head>
+<body>
+<ul></ul>
+<button type="button">Next</button>
+<script>
+	let arr= ["Poughkeepsie","Newburgh","Peekskill","Yonkers","Bronx","Grand Central"];
+	let btn = document.querySelector("button");
+	let list = document.querySelector("ul");
+	function* getStop(){	
+		for(let i=0; i<arr.length;i++){		
+			yield(arr[i]);			
+		}	
+	}
+	const nycTrainline = getStop();
+	function next(){
+		let currStop =  nycTrainline.next();
+		if(currStop.done){
+			console.log("we made it!");
+			btn.disabled  = true;
+		}else {
+			let node = document.createElement("li");
+			node.textContent = currStop.value;
+			list.appendChild(node);
+		}
+	}
+	btn.addEventListener("click",next);
+</script>
+</body>
+</html>

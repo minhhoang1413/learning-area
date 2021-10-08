@@ -1,0 +1,17 @@
+<script>
+	function getStudents(classroom){
+		let {hasTeachingAssistance, classList} = classroom;
+		let teacher, teachingAssistance, students;
+		if(hasTeachingAssistance){
+			[teacher,teachingAssistance, ...students] = classList;
+		}else {
+			[teacher, ...students] = classList;
+		}
+		return students;
+	}
+	let classroom = {
+			hasTeachingAssistance: true,
+			classList: ["John","Lisa","Harry","Anna","Peter","Bruce","Chris"]
+			};
+	console.log(getStudents(classroom));
+</script>

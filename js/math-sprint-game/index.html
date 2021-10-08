@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>Math Sprint Game</h1>
+        </div>
+        <div id="splash-page" class="card">
+            <!-- <h2>Choose Level</h2> -->
+            <form action="" id="start-form">
+                <div class="math-type">
+                    <div class="radio-container">
+                        <input checked value="plus" type="radio" name="qtype" id="plus" required>
+                        <label for="plus">
+                            <span class="level">+</span>
+                        </label>
+                    </div>
+                    <div class="radio-container">
+                        <input value="sub" type="radio" name="qtype" id="sub" required>
+                        <label for="sub">
+                            <span class="level">-</span>
+                        </label>
+                    </div>
+                    <div class="radio-container">
+                        <input value="mul" type="radio" name="qtype" id="mul" required>
+                        <label for="mul">
+                            <span class="level">x</span>
+                        </label>
+                    </div>
+                    <div class="radio-container">
+                        <input value="divide" type="radio" name="qtype" id="divide" required>
+                        <label for="divide">
+                            <span class="level">/</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="radio-container">
+                    <input checked value="10" type="radio" name="level" id="value-10" required>
+                    <label for="value-10">
+                        <span class="level">10 Questions</span>
+                        <span class="best-score">
+                            <span>Best Score</span>
+                            <span class="best-score-value">0.0s</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="radio-container">
+                    <input value="20" type="radio" name="level" id="value-20">
+                    <label for="value-20">
+                        <span class="level">20 Questions</span>
+                        <span class="best-score">
+                            <span>Best Score</span>
+                            <span class="best-score-value">0.0s</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="radio-container">
+                    <input value="30" type="radio" name="level" id="value-30">
+                    <label for="value-30">
+                        <span class="level">30 Questions</span>
+                        <span class="best-score">
+                            <span>Best Score</span>
+                            <span class="best-score-value">0.0s</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="radio-container">
+                    <input value="40" type="radio" name="level" id="value-40">
+                    <label for="value-40">
+                        <span class="level">40 Questions</span>
+                        <span class="best-score">
+                            <span>Best Score</span>
+                            <span class="best-score-value">0.0s</span>
+                        </span>
+                    </label>
+                </div>
+                <button class="start-round" type="submit">Start Round</button>
+            </form>
+        </div>
+        <div class="card hide" id="countdown-page">
+            <h2 class="countdown"></h2>
+        </div>
+        <div class="card hide" id="game-page">
+            <h2>
+                <span id="answer">0/10</span>
+                <span class="time-played">0</span>
+            </h2>
+
+            <div class="item-container">
+                <p class="item active"></p>
+                <p class="item">1 x 1 = 1</p>
+                <p class="item">1 x 1 = 2</p>
+                <p class="item">1 x 1 = 3</p>
+                <p class="item">1 x 1 = 4</p>
+                <p class="item">1 x 1 = 5</p>
+                <p class="item">1 x 1 = 6</p>
+                <p class="item">1 x 1 = 7</p>
+                <p class="item">1 x 1 = 8</p>
+                <p class="item">1 x 1 = 9</p>
+                <p class="item">1 x 1 = 10</p>
+                <p class="item padding"></p>
+
+            </div>
+            <div class="item-footer">
+                <button class="wrong">Wrong</button>
+                <button class="right">Right</button>
+            </div>
+        </div>
+        <div class="card hide" id="score-page">
+            <h2 class="title">Your Time</h2>
+            <h2 class="final-time"></h2>
+            <h2 class="base-time">Base Time: </h2>
+            <h2 class="pen-time">Penalty: </h2>
+            <button id="result-btn">Xem chi tiết</button>
+            <button id="play-again">Play Again</button>
+        </div>
+        <div class="card hide" id="result-page">
+            <h2 class="title">1/10</h2>
+
+            <div class="result-detail">
+                <p class="wrong">1 x 1 = 1</p>
+                <p class="">1 x 1 = 2</p>
+                <p class="">1 x 1 = 3</p>
+                <p class="">1 x 1 = 4</p>
+                <p class="wrong">1 x 1 = 5</p>
+                <p class="">1 x 1 = 6</p>
+                <p class="">1 x 1 = 7</p>
+                <p class="">1 x 1 = 8</p>
+                <p class="">1 x 1 = 9</p>
+                <p class="wrong">1 x 1 = 10</p>
+            </div>
+            <button id="">Play Again</button>
+        </div>
+    </div>
+</body>
+
+</html>

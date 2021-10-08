@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <video class="video-background" loop muted autoplay>
+        <source src="time.mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="container">
+        <div class="input-container">
+            <h1>Create a Custom Countdown!</h1>
+            <form class="form" id="countdownForm">
+                <label for="title">Title</label>
+                <input required type="text" id="title" placeholder="What are you counting down to?">
+                <label for="date-picker">Select a Date</label>
+                <input required type="datetime-local" id="date-picker">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="countdown" id="countdown" hidden>
+            <h1 id="countdown-title">asdasasdass</h1>
+            <ul id="countdown-list">
+                <li><span>0</span>Days</li>
+                <li><span>0</span>Hours</li>
+                <li><span>0</span>Minutes</li>
+                <li><span>0</span>Seconds</li>
+            </ul>
+            <button id="countdown-button-reset">RESET</button>
+        </div>
+        <div class="complete" id="complete" hidden>
+            <h1 class="complete-title">Countdown Complete!</h1>
+            <h1 id="complete-info">title1111 finished on 2021-09-24</h1>
+            <button id="complete-button">NEW COUNTDOWN</button>
+        </div>
+    </div>
+</body>
+</html>

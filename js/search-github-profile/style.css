@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: mediumslateblue;
+    color: white;
+}
+#form {
+    width: 70%;
+    max-width: 700px;
+}
+#search {
+    appearance: none;
+    width: 100%;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rebeccapurple;
+    color: white;
+}
+#search::placeholder {
+    color: gainsboro;
+}
+#main {
+    width: 80%;
+    max-width: 800px;
+}
+.card {
+    background-color: rebeccapurple;
+    border-radius: 10px;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+}
+.card-img {
+    flex: 0 0 150px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid orchid;
+    border-radius: 50%;
+}
+.card-text p {
+    margin: 20px 0;
+}
+.card-text ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    margin: 10px 0;
+}
+.repo a {
+    text-decoration: none;
+    color: inherit;
+    background-color: mediumpurple;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}

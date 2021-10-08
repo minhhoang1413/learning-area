@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+<script>
+	function check(password){
+		let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/;
+		return regex.test(password) 
+				? "Your password is valid" 
+				: "Your password is invalid";
+	}
+	console.log(check("a@A\.asdas9"));
+	console.log(check("a@A\.asdas"));
+</script>
+</body>
+</html>

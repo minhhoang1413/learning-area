@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> </title>
+<style>
+html {
+    box-sizing: border-box;
+	
+	
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+:root{
+--asd: "_";
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+.wrapper {
+    width: 700px;
+	background-color: whitesmoke;
+	display: grid;
+	grid-template-columns: 4fr 3fr;
+}
+.cal-btn {
+grid-row: 2;
+}
+.calc-button-row{
+display:flex;
+justify-content: flex-end;
+}
+button {
+appearance: none;
+border: 0;
+
+flex: 0 1 25%;
+height: 50px;
+font-size: 1.4em;
+background-color: white;
+border: 2px solid whitesmoke;
+}
+button:hover{
+background-color:lightgray;
+
+}
+button:active{
+box-shadow: inset 0px 0px 0px 4px silver;
+}
+.screen {
+height: 100px;
+display: flex;
+flex-direction: column;
+max-width: 400px;
+overflow-x: auto;
+overflow-y: hidden;
+}
+.screen div {
+flex: 1 1 50%;
+padding: 10px;
+}
+.result {
+font-size: 2em;
+text-align:right;
+margin-right: 1em;
+}
+.history {
+grid-row: 1/3;
+max-height: 360px;
+overflow: auto
+}
+.cal-show{
+padding:10px;
+}
+.cal-show::after{
+	content:var(--asd);
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+	<section class="screen">
+		<div class="cal-show"></div>
+		<div class="result">0</div>
+	</section>
+	<section class="cal-btn">
+		<div class="calc-button-row">
+		<button class="calc-button-negative">-</button>
+			<button class="calc-button-del">DEL</button>
+			<button class="calc-button-ac">AC</button>
+		</div>
+		<div class="calc-button-row">
+			<button class="calc-button">(</button>
+			<button class="calc-button">)</button>
+			<button class="calc-button">^</button>
+			<button class="calc-button">÷</button>
+		</div>
+		<div class="calc-button-row">
+			<button class="calc-button">7</button>
+			<button class="calc-button">8</button>
+			<button class="calc-button">9</button>
+			<button class="calc-button">×</button>
+		</div>
+		<div class="calc-button-row">
+			<button class="calc-button">4</button>
+			<button class="calc-button">5</button>
+			<button class="calc-button">6</button>
+			<button class="calc-button">−</button>
+		</div>
+		<div class="calc-button-row">
+			<button class="calc-button">1</button>
+			<button class="calc-button">2</button>
+			<button class="calc-button">3</button>
+			<button class="calc-button">+</button>
+		</div>
+		<div class="calc-button-row">
+			<!-- <button class="calc-button">&larr;</button> -->
+			<button class="calc-button-ans">Ans</button>
+			<button class="calc-button">0</button>
+			<button class="calc-button-point">.</button>
+			<button id="equal-btn" class="calc-button-equal">&equals;</button>
+		</div>
+	</section>
+	<section class="history">
+	<h6>History</h6>
+	<ul class=""></ul>
+	</section>
+</div>
+<script>
+	let cal_show = document.querySelector(".cal-show");
+	let cal_result = document.querySelector(".result");
+	let ans =  0;
+	document.querySelectorAll(".calc-button").forEach(btn => { btn.addEventListener("click", showOnScreen); });
+	function showOnScreen(ev){
+		cal_show.textContent += this.textContent;
+	}
+	document.querySelector("#equal-btn").addEventListener("click",calculate);
+	function calculate(){
+	//console.log("= click");
+		let exp = cal_show.textContent;
+		let regex = /(?<!\+|-|\×|\÷|\^)\(|\)(?!\+|-|\×|\÷|\^)/g;
+		let array;
+		while( (array=regex.exec(exp)) != null ){
+			//console.log(array);
+			if(array.index != (exp.length-1) && array.index !=0){
+				let k = array[0] == "(" ? 0 : 1;
+				
+				exp = exp.slice(0,array.index+k) + "×" + exp.slice(array.index+k);
+				console.log(exp);
+				
+			}
+		}
+		
+		
+		let result = evaluatePostfix(infixToPostFix(exp));
+		if( !isNaN(result)){
+		cal_result.textContent = result;
+		ans = result;
+		let li = document.createElement("li");
+		li.textContent = cal_show.textContent + " = " + result;
+		document.querySelector(".history ul").appendChild(li);
+		}else {
+			cal_result.textContent = "ERROR";
+		}
+	}
+	function precedence(o){
+		switch (o){
+			case "+":
+			case "−": return 1;
+			case "×":
+			case "÷": return 2;
+			case "^": return 3;
+		}
+		
+	}
+	function infixToPostFix(exp){
+		let result = [];
+		let stack = [];
+		for(let i=0;i<exp.length;i++){
+			let c = exp[i];
+			/*if(c === "A"){
+					result.push(ans);
+					console.log(result);
+					i = i + 2;
+			}
+			else*/ 
+			
+			if( !isNaN(c) || c == "-" ){
+				//result += c ;
+				let num = c;
+				let j=i+1;
+				while(!isNaN(exp[j]) || exp[j]=="." ){
+					num += exp[j];
+					j++;
+					if( isNaN(num) ){
+						cal_result.textContent = "ERROR";
+						return;
+					}
+				}
+				
+				result.push(num);
+				i= j-1;
+				//console.log(result);
+			}
+			
+			else if (c == "("){
+				stack.push(c);
+			} 
+			else if (c== ")"){
+				while( stack.length != 0 && stack[stack.length -1] != "("){
+						result.push(stack.pop());
+				}
+				//console.log(stack);
+				if(stack[stack.length -1] != "("){
+					cal_result.textContent = "ERROR";
+					return;
+				} 
+				else stack.pop();
+			}
+			else {
+				while(stack.length != 0 && precedence(c) <= precedence(stack[stack.length -1])){
+					result.push(stack.pop());
+				}
+				stack.push(c);
+			}
+		}
+		//console.log(stack.leng);
+		while(stack.length > 0){
+		
+			if(stack[stack.length -1] == "("){
+				cal_result.textContent = "ERROR";
+				return;
+			} 
+			
+			else result.push(stack.pop());
+			//console.log(stack.length >=0 );return;
+		}
+		return result;
+	}
+	function evaluatePostfix(exp){
+		let stack = [];
+		for(let i=0;i<exp.length;i++){
+			let c=exp[i];
+			if( !isNaN(parseFloat(c))){
+			//console.log(c,parseFloat(c));
+				stack.push(parseFloat(c));
+				
+			}
+			
+			else{
+			
+				let value1 = stack.pop();
+				let value2 = stack.pop();
+				console.log(value2,value1)
+				switch (c){
+					case "+": stack.push(value2+value1);break;
+					case "−": stack.push(value2-value1);break;
+					case "×": stack.push(value2*value1);break;
+					case "÷": stack.push(value2/value1);break;
+					case "^": stack.push(value2**value1);break;
+				}
+			}
+		}
+		//console.log(stack );return;
+		return stack.pop();
+	}
+	
+	document.querySelector(".calc-button-del").addEventListener("click",function(){
+		cal_show.textContent = cal_show.textContent.slice(0,-1);
+	});
+	document.querySelector(".calc-button-ac").addEventListener("click",function(){
+		cal_show.textContent = "";
+		cal_result.textContent= "0";
+	});
+	document.querySelector(".calc-button-ans").addEventListener("click",function(){
+		if(ans<0)cal_show.textContent += "("+ans+")";
+		else cal_show.textContent += ans;
+	});
+	document.querySelector(".calc-button-negative").addEventListener("click",append_negative_number);
+	function append_negative_number(){
+		let len = cal_show.textContent.length;
+		let text = cal_show.textContent;
+		let regrex = /\d|\./;
+		let i;
+		for( i=len;i>0;i--){
+			if(!regrex.test(text[i-1]))break;
+		}
+		//console.log(i);
+		if(i==len)cal_show.textContent = text.slice(0, i) + "(-";
+		else
+			cal_show.textContent = text.slice(0, i) + "(-" + text.slice(i) + ")";
+	}
+	document.querySelector(".calc-button-point").addEventListener("click",function(){
+		let exp = cal_show.textContent;
+		if(isNaN(exp[exp.length-1]))cal_show.textContent += "0.";
+		else cal_show.textContent += ".";
+	});
+</script>
+</body>
+</html>

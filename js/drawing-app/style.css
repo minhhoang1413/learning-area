@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    
+    height: 100vh;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    /* margin-top: 500px; */
+}
+#canvas {
+    border: 2px solid steelblue;
+    cursor: none;
+    /* flex:0 0 auto; */
+}
+.toolbox {
+    /* background-color: steelblue; */
+    /* flex: 1 0 auto; */
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 0 20px;
+    
+}
+.toolbox button, .toolbox span, .toolbox input {
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid steelblue;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.toolbox span {
+    text-align: center;
+    line-height: 1.6;
+}
+.toolbox .eraser {
+    margin-left: auto;
+}
+.eraser.active {
+    border: 5px solid greenyellow
+}
+.cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    /* left: -100px; */
+    cursor: none;
+    pointer-events: none;
+    display: none;
+    transform: translate(-50%,-50%);
+}
+.cursor.show {
+    display: inline-block;
+}
+.cursor.show.erase {
+    background: url(eraser.svg) center/ cover no-repeat;
+}
+button:hover {
+    background-color: lightgoldenrodyellow;
+}
+button:focus {
+    
+    animation: activeBtn 2s ;
+}
+@keyframes activeBtn {
+    to {
+        border: 5px darkseagreen dotted;
+    }
+}

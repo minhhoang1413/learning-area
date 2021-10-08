@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: lightblue;
+    color: midnightblue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.container {
+    padding: 40px;
+    background-color: mediumaquamarine;
+    max-width: 600px;
+}
+.result-container {
+    min-height: 50px;
+    background-color: mintcream;
+    position: relative;
+    margin: 30px 0 20px;
+    padding: 10px;
+}
+#result {
+    word-break: break-all;
+}
+.icon-btn {
+    float: right;
+    border: 0;
+    
+    background-color: transparent;
+    cursor: pointer;
+    /* position: absolute;
+    right: 5px;
+    top: 5px; */
+    /* margin: 5px 5px 5px 20px; */
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    background: url(clipboard.svg) center/cover no-repeat;
+}
+.icon-btn.copied {
+    background-image: url(clipboard-check.svg);
+}
+.icon-btn:hover {
+    background-color: greenyellow;
+}
+.icon {
+    width: 30px;
+    height: 30px;
+    
+}
+.settings {
+    margin: 20px 0;
+}
+.setting {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#length {
+    font-size: 100%;
+    font-family: inherit;
+}
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: aqua;
+}
+#generate-btn {
+    appearance: none;
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: turquoise;
+    cursor: pointer;
+    border: 0;
+    color: floralwhite;
+}

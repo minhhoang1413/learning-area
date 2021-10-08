@@ -1,0 +1,116 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.img-gallery, .thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.img-gallery:hover, .thumbnail {
+    opacity: 0.2;
+}
+.thumbnail:hover {
+    opacity: 1;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    
+    transition: all 1s 1s;
+    transition-delay: 2s;
+}
+.modal.active {
+    display: block;
+    
+}
+.close {
+    font-size: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+}
+.slides {
+    width: 100%;
+    height: 100%;
+    /*margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 0px;*/
+    
+   position: relative;
+   grid-row: 1/2;
+   grid-column: 1/4;
+   z-index: -1;
+}
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.slide.active {
+    z-index: 1;
+    opacity: 1;
+}
+.thumbnails {
+    grid-row: 2/3;
+   grid-column: 1/4;
+   display: flex;
+   flex-direction: row;
+   overflow-x: auto;
+   overflow-y: hidden;
+}
+.thumbnail {
+    flex: 0 0 150px;
+}
+.thumbnail.active {
+    opacity: 1;
+}
+.arrow {
+    z-index: 1;
+    background-color: rgba(255 255 255 / 0.5);
+    color: white;
+    font-size: 40px;
+    height: 50px;
+   align-self: center;
+   transition: 0.5s;
+   cursor: pointer;
+}
+.arrow:hover {
+    background-color: white;
+}
+.arrow img {
+    width: 100%;
+}
+.arrow-left {
+    grid-row: 1/2;
+   grid-column: 1/2;
+   
+}
+.arrow-right {
+    grid-row: 1/2;
+   grid-column: 3/4;
+}
+.modal-content {
+    display: grid;
+    grid-template-columns: 30px 70vw 30px;
+    grid-template-rows: 70vh 150px;
+    row-gap: 10px;
+    height: 100%;
+    width: 100%;
+    place-content: center;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> </title>
+</head>
+<body>
+<div id="clock"></div>
+<script>
+
+	let clock = document.querySelector("#clock");
+
+	function run(){
+		clock.textContent = new Date().toLocaleTimeString();
+		setTimeout(run,1000);
+	}
+	run();
+</script>
+</body>
+</html>

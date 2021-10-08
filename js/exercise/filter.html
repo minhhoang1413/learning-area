@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<ul></ul>
+</body>
+<script>
+const animals = [
+	{type: "cat", mammal: true},
+	{type: "frog", mammal: false},
+	{type: "dog", mammal: true},
+	{type: "shark", mammal: false}
+];
+function listMamal(animals){
+	let mammals = animals.filter(animal => animal.mammal === true );
+	let list = document.querySelector("ul");
+	mammals.forEach(mammal => {
+		let li = document.createElement("li");
+		li.textContent = mammal.type;
+		list.appendChild(li);
+	});
+}
+listMamal(animals);
+</script>
+</html>

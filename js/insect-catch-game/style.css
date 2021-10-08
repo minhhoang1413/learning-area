@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: deepskyblue;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+}
+.screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: transform 1s;
+}
+.screen.up {
+    transform: translateY(-100%);
+}
+h1 {
+    text-align: center;
+    line-height: 1.5;
+}
+.play-btn, .play-again-btn {
+    font-family: inherit;
+    background-color: white;
+    color: cornflowerblue;
+    padding: 15px 20px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+.play-again-btn {
+    display: none;
+}
+.play-again-btn.show {
+    display: block;
+}
+.play-btn:hover {
+    background-color: skyblue;
+    color: white;
+    outline: 2px solid white;
+}
+.insect-list {
+    margin-top: 20px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.insect-list img {
+    width: 100%;
+    
+    object-fit: cover;
+}
+.choose-insect-btn {
+    border: 3px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 150px;
+    height: 150px;
+    font-family: inherit;
+    padding: 10px;
+}
+.choose-insect-btn:hover {
+    background-color: white;
+    border-color: aliceblue;
+    
+}
+.choose-insect-btn:hover p {
+    color: cornflowerblue;
+}
+.choose-insect-btn p {
+    color: white;
+}
+.game-container {
+    position: relative;
+    cursor: url(hammer.svg) 0 20, auto;
+}
+.game-container h3 {
+    position: absolute;
+    top: 50px;
+}
+.time {
+    
+    left: 10px;
+}
+.score {
+    right: 10px;
+}
+.game-container img {
+    width: 100px;
+    height: 100px;
+    
+    
+    position: absolute;
+    z-index: 10;
+    border-radius: 100%;
+    transition: transform 0.5s 0.5s;
+}
+.game-container img.hit {
+    transform: scale(0);
+    filter: invert(100%)
+}
+#cursor {
+    position: absolute;
+    z-index: 10;
+}
+.hammer {
+    width: 150px;
+    height: 150px;
+    background: url(hammer.svg) center/cover no-repeat;
+    position: absolute;
+    z-index: 11;
+    display: inline-block;
+    animation: hammerhit 0.2s forwards;
+}
+@keyframes hammerhit {
+    95% {
+        transform: rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@media screen  and (max-width: 400px){
+    h1 {
+        font-size: 20px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+}

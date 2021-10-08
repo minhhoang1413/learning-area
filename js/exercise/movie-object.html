@@ -1,0 +1,13 @@
+<script>
+function Movie(title, director, genre, realease, rating){
+	this.title = title;
+	this.director = director;
+	this.genre = genre;
+	this.realease = realease;
+	this.rating = rating;
+}
+Movie.prototype.getOverview = function(){
+	return `${this.title}, a ${this.genre} film direct by ${this.director} was realease in ${this.realease}. It received a rating of ${this.rating}.`
+}
+
+</script>
