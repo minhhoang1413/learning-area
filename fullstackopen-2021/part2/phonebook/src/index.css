@@ -1,0 +1,17 @@
+.notification {
+    padding: 15px;
+    font-weight: 900;
+    border: 3px solid currentColor;
+    margin-bottom: 20px;
+    display: none;
+}
+.success {
+    background-color: mintcream;
+    color: green;
+    display: block;
+}
+.error {
+    background-color: peachpuff;
+    color: red;
+    display: block;
+}
