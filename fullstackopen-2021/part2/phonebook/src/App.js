@@ -45,6 +45,12 @@ const App = () => {
             setTimeout(() => {
               setNotification(null)
             }, 2000);
+          }).catch(error => {
+            //console.log(error.response);
+            setNotification({message:`${error.response.data.error}` ,  type:"error"})
+            setTimeout(() => {
+              setNotification(null)
+            }, 2000);
           })
     
   }
@@ -61,15 +67,21 @@ const App = () => {
       setTimeout(() => {
         setNotification(null)
       }, 2000);
+    }).catch(error => {
+      //console.log(error.response);
+      setNotification({message:`${error.response.data.error}` ,  type:"error"})
+      setTimeout(() => {
+        setNotification(null)
+      }, 2000);
     })
   }
   const removePerson = (personDelete) => {
     const confirm = window.confirm(`delete ${personDelete.name} ?`);
     if (!confirm) return; 
     personService.remove(personDelete.id).then(response => {
-      console.log(response);
+      //console.log(response);
       setPersons(persons.filter(person => person.id !== personDelete.id));
-      setNotification({message:`delete ${newName} number` ,  type:"success"});
+      setNotification({message:`delete ${personDelete.name} number` ,  type:"success"});
       setTimeout(() => {
         setNotification(null)
       }, 2000);
