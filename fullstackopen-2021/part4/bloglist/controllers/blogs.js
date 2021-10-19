@@ -44,7 +44,7 @@ blogsRouter.delete('/:id',userExtractor ,async (request, response) => {
         const userId = request.userId
 
         const blog = await Blog.findById(request.params.id)
-
+        console.log('blog',blog);
         if (blog.user.toString() !== userId.toString()) {
 
             return response.status(401).json({ error: 'Unauthorized' })
@@ -52,6 +52,7 @@ blogsRouter.delete('/:id',userExtractor ,async (request, response) => {
         await blog.deleteOne()
         response.status(204).end()
     } catch (error) {
+        console.log(error)
         response.status(400).end()
     }
 })

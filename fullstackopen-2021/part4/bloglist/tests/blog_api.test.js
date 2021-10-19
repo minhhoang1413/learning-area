@@ -49,9 +49,9 @@ test('success create a blog', async () => {
         password: 'pass'
     }
     const responselogin = await api.post('/api/login').send(user).expect(200)
-    const token ='bearer ' + responselogin.body.token;
+    const token = 'bearer ' + responselogin.body.token;
     await api.post('/api/blogs')
-    .set('Authorization', token)
+        .set('Authorization', token)
         .send(newBlog)
         .expect(201)
         .expect('Content-Type', /application\/json/)
@@ -78,7 +78,14 @@ test('likes property default value is 0', async () => {
         author: "author 3",
         url: "http://url3.com",
     }
-    const response = await api.post('/api/blogs')
+    const user = {
+        username: 'username123',
+        password: 'pass'
+    }
+    const responselogin = await api.post('/api/login').send(user).expect(200)
+    const token = 'bearer ' + responselogin.body.token;
+
+    const response = await api.post('/api/blogs').set('Authorization', token)
         .send(blogMissingLike)
     expect(response.body.likes).toBe(0)
 })
@@ -88,7 +95,14 @@ test('title and url properties are missing responds the status code 400 Bad Requ
         url: "http://url3.com",
         likes: 0
     }
-    await api.post('/api/blogs')
+    const user = {
+        username: 'username123',
+        password: 'pass'
+    }
+    const responselogin = await api.post('/api/login').send(user).expect(200)
+    const token = 'bearer ' + responselogin.body.token;
+
+    await api.post('/api/blogs').set('Authorization', token)
         .send(blogMissingTitle)
         .expect(400)
 
@@ -96,7 +110,14 @@ test('title and url properties are missing responds the status code 400 Bad Requ
 test('delete one blog', async () => {
     const blogsAtStart = await (await api.get('/api/blogs')).body
     const blogToDelete = blogsAtStart[0]
-    await api.delete('/api/blogs/' + blogToDelete.id)
+    const user = {
+        username: 'username123',
+        password: 'pass'
+    }
+    const responselogin = await api.post('/api/login').send(user).expect(200)
+    const token = 'bearer ' + responselogin.body.token;
+
+    await api.delete('/api/blogs/' + blogToDelete.id).set('Authorization', token)
         .expect(204)
     const blogsAtEnd = await (await api.get('/api/blogs')).body
     expect(blogsAtEnd).toHaveLength(initialBlog.length - 1)
@@ -132,9 +153,9 @@ describe('test add user', () => {
             .send(userObj)
             .expect(400)
             .expect('Content-Type', /application\/json/)
-        expect(response.body.error).toMatch(/User validation failed: username: Error, expected `username` to be unique. Value: `.*`/); 
+        expect(response.body.error).toMatch(/User validation failed: username: Error, expected `username` to be unique. Value: `.*`/);
         const usersAtEnd = await User.find({})
-        
+
         expect(usersAtEnd).toHaveLength(usersAtStart.length)
     })
 })
