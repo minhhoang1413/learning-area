@@ -1,0 +1,24 @@
+.card {
+    display: grid;
+}
+.front {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 0;
+    transform: rotateY(90deg);
+    transition: 0s;
+}
+.flipped .front {
+    transform: rotateY(0);
+    transition: 0.5s;
+}
+.back {
+    grid-row: 1;
+    grid-column: 1;
+    transition: 0.5s;
+    transform: rotateY(0);
+}
+.flipped .back {
+    transform: rotateY(90deg);
+    transition: 0s;
+}
