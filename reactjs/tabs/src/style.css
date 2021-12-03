@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: aliceblue;
+  min-height: 100vh;
+}
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.title {
+  margin-bottom: 3em;
+}
+.title h2 {
+  text-transform: capitalize;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 0.2em;
+}
+.underline {
+  width: 100px;
+  height: 3px;
+  background-color: darkblue;
+  margin: 0 auto;
+}
+.jobs-center {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-container {
+  flex-basis: 15%;
+  display: flex;
+  flex-direction: column;
+}
+.job-btn {
+  appearance: none;
+  border: 0;
+  background-color: unset;
+  height: 2rem;
+  line-height: 2;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.job-btn.active {
+  color: turquoise;
+  border-left: 2px solid turquoise;
+}
+.job-info {
+  flex-basis: 80%;
+}
+.job-info h3 {
+  font-size: 1.4rem;
+}
+.job-info h4 {
+  background-color: gainsboro;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+.job-date {
+  color: darkslategray;
+  margin-bottom: 0.5rem;
+}
+.job-desc {
+  display: grid;
+  grid-template-columns: 2rem auto;
+  margin-bottom: 1rem;
+}
+.job-icon {
+  align-self: center;
+  color: turquoise;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}

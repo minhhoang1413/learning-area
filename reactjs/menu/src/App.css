@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+main {
+  background-color: aliceblue;
+  min-height: 100vh;
+}
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+.underline {
+  width: 100px;
+  height: 3px;
+  background-color: goldenrod;
+  margin: 10px auto;
+}
+.btn-container {
+display: block;
+  margin: 2rem auto 3rem;
+  text-align: center;
+}
+.filter-btn {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  background-color: unset;
+  text-transform: capitalize;
+  margin: 0 1rem;
+  font-size: 1.1rem;
+  color: darkgoldenrod;
+  cursor: pointer;
+}
+
+.menu {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.section-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.menu-item {
+  flex: 0 1 49%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.item-info {
+  flex: 0 0 56%;
+ 
+}
+.item-info header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid khaki;
+  margin-bottom: 1.2rem;
+  text-transform: capitalize;
+}
+.price {
+  color: darkgoldenrod;
+}
+.photo {
+  object-fit: cover;
+  flex: 0 0 40%;
+width: 40%;
+height: 150px;
+display: block;
+border: 2px solid gold;
+}

@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.btn {
+    font-size: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    border-color: transparent;
+    color: #fff;
+    background: #222;
+    cursor: pointer;
+    transition: all .3s linear;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+}
+.nav-center {
+    width: 90vw;
+    max-width: 1100px;
+}
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-toggle svg {
+    vertical-align: middle;
+}
+.nav-links, .signin-btn {
+    display: none;
+}
+@media screen and (min-width: 800px) {
+    .btn-toggle {
+        display: none;
+    }
+    .nav-center {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-links {
+        align-self: stretch;
+        flex: 1;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .link-btn {
+        background-color: transparent;
+        border: none;
+        /* padding: 1rem 2rem; */
+        text-transform: capitalize;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: bold;
+        width: 10rem;
+        height: 100%;
+    }
+    .signin-btn {
+        display: unset;
+    }
+    .sidebar-wrapper {
+        display: none !important;
+    }
+}
+.sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center;
+    transform: scale(0);
+    transition: transform 0.5s ;
+}
+.sidebar-wrapper.show {
+    transform: scale(1);
+}
+.sidebar {
+    width: 95%;
+    height: 90%;
+    background-color: white;
+    border-radius: 2px;
+    position: relative;
+    padding: 3rem 2rem;
+}
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.sidebar-links article {
+    margin-bottom: 2rem;
+}
+.sidebar-links h4 {
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+.sidebar-sublinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+.sidebar-sublinks a {
+    color: unset;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+}
+.sidebar-sublinks a svg {
+    margin-right: 0.5rem;
+}
+.hero {
+    background: url('./images/hero.svg') no-repeat top left/cover;
+    height: 100vh;
+    margin-top: -5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-center {
+    display: flex;
+    padding: 1rem;
+}
+.hero-center h1 {
+    font-size: 3rem;
+    max-width: 500px;
+    margin-bottom: 2rem
+}
+.hero-center p {
+    font-size: 1.25rem;
+    max-width: 35em;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    color: steelblue;
+}
+.hero-image {
+    display: none;
+}
+@media screen and (min-width:800px) {
+    .hero-image {
+        display: unset;
+    }
+}
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    /* top: 0; */
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px lightgray, -2px -2px 2px lightgray;
+    transform: translateX(-50%);
+    transition:all 0.5s;
+}
+.submenu::before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid white;
+    height: 0px;
+    width: 0px;
+}
+.submenu.show {
+    display: block;
+}
+.submenu-center {
+    display: grid;
+    gap: 0.25rem 2rem;
+}
+.submenu h4 {
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+.submenu-center a {
+    width: 10rem;
+    display: block;
+    color: gray;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+}
+.submenu-center a svg {
+    margin-right: 0.5rem;
+}
+.col-2 {
+    grid-template-columns: 1fr 1fr;
+}
+.col-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.col-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
