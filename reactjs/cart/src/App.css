@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: gainsboro;
+}
+a {
+    text-decoration: none;
+}
+img {
+    width: 100%;
+    display: block;
+}
+.btn {
+    text-transform: uppercase;
+    background-color: deepskyblue;
+    color: white;
+    padding: 0.375rem 0.75rem;
+    display: inline-block;
+    font-weight: 700;
+    transition: all 0.5s;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+color: deepskyblue;
+background: cyan;
+}
+.loading {
+    text-align: center;
+    margin-top: 5rem;
+}
+nav {
+    background-color: royalblue;
+    padding: 1rem 2rem;
+    color: white;
+}
+.nav-center {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+.nav-center h3 {
+    font-size: 1.5rem;
+}
+.nav-container {
+    position: relative;
+}
+
+nav svg {
+    width: 2rem;
+    fill: white;
+}
+.amount-container {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: skyblue;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    line-height: 1;
+    color: white;
+}
+
+.cart {
+    width: 90vw;
+    margin: 0 auto;
+}
+.cart header {
+    text-align: center;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+.cart footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+.cart-total h4 {
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.clear-btn {
+    background: transparent;
+    padding: 0.5rem 1rem;
+    margin-top: 2.25rem;
+    background-color: tomato;
+}
+.cart-item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+    grid-column-gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+.cart-item img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+}
+.cart-item h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+.amount-btn {
+    width: 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.amount {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+.remove-btn {
+    cursor: pointer;
+    font-size: 0.85rem;
+    background: transparent;
+    border: none;
+    margin-top: 0.375rem;
+    color: lightslategray;
+}

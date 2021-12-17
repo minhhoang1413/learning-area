@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: ghostwhite;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+img {
+    width: 100%;
+    display: block;
+}
+.btn {
+    text-transform: uppercase;
+    color: black;
+    border: 2px solid black;
+    padding: 0.45rem 0.8rem;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: transparent;
+}
+.btn-primary {
+    background-color: turquoise;
+    border-color: turquoise;
+    color: white;
+}
+.navbar {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid seagreen;
+    box-shadow: 5px 0 10px 2px teal;
+    height: 5rem;
+}
+.nav-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+}
+.nav-links {
+    display: flex;
+}
+.nav-links li {
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+}
+.logo {
+    width: 12rem;
+}
+.about-section {
+    width: 80%;
+    max-width:1000px;
+    margin: 0 auto;
+}
+.about-section p {
+    line-height: 2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+.error-page {
+    display: flex;
+    justify-content: center;
+}
+.error-container {
+    text-align: center;
+    text-transform: capitalize;
+}
+.section {
+    padding: 5rem 0;
+}
+.section-title {
+    font-size: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    margin-top: 1rem;
+}
+.cocktails-center {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+ 
+}
+.cocktail {
+    background: seashell;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border-radius: 5px;
+}
+.section-search {
+    margin-top: 5rem;
+}
+.search {
+    margin-top: 1rem;
+    padding-bottom: 0;
+}
+.search-form {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1000px;
+    background: white;
+    padding: 2rem 2.5rem;
+    text-transform: capitalize;
+    border-radius: 5px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.25rem;
+    color: teal;
+}
+.form-control input {
+    width: 100%;
+    border: none;
+    border-color: transparent;
+    background: whitesmoke;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+.loader {
+    width: 4rem;
+    height: 4rem;
+    border: 0.5rem solid gainsboro;
+    border-radius: 50%;
+    border-top-color: dimgray;
+    animation: loading 1s linear 0s infinite;
+    margin: 5rem auto;
+}
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.cocktail-section {
+    text-align: center;
+  }
+.drink {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+.drink img {
+    border-radius: 1rem;
+}
+.drink p {
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 1.8;
+}
+.drink span {
+    margin-right: 0.5rem;
+}
+.drink-data {
+    background: mediumspringgreen;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    color: black;
+}
+.drink-info {
+    padding-top: 2rem;
+}
