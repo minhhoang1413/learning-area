@@ -3,7 +3,10 @@ const Product = require('../models/Product')
 const { BadRequestError, NotFoundError } = require('../errors')
 const { checkPermission } = require('../utils')
 const getAllReviews = async (req, res) => {
-    const reviews = await Review.find()
+    const reviews = await Review.find({}).populate({
+        path: 'product',
+        select: 'name company price'
+    })
     res.status(200).json({ reviews, count: reviews.length })
 }
 const getReview = async (req, res) => {
@@ -56,5 +59,17 @@ const deleteReview = async (req, res) => {
     await review.remove()
     res.sendStatus(200)
 }
+const getSingleProductReviews = async (req, res) => {
+    const productId = req.params.id
+    const reviews = await Review.find({ product: productId })
+    res.status(200).json({ reviews, count: reviews.length })
+}
 
-module.exports = { getAllReviews, getReview, createReview, updateReview, deleteReview }
+module.exports = {
+    getAllReviews,
+    getReview,
+    createReview,
+    updateReview,
+    deleteReview,
+    getSingleProductReviews
+}

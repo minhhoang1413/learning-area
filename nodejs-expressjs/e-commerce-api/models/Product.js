@@ -55,11 +55,28 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    numberOfReviews: {
+        type: Number,
+        default: 0
+    },
     user: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
         required: true
     },
-}, { timestamps: true })
+}, { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } })
 
+productSchema.virtual('reviews', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'product',
+    justOne: false,
+    // match: {'rating':1}
+})
+productSchema.pre('remove', async function(){
+    console.log(this);
+    console.log(this.model('Review'));
+    console.log(this.model('User'));
+    await this.model('Review').deleteMany({product:this._id})
+})
 module.exports = mongoose.model('Product', productSchema)

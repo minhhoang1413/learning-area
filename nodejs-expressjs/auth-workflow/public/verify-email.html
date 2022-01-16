@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify email</title>
+</head>
+
+<body>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = decodeURIComponent(urlParams.get('email'))
+        const verificationToken = urlParams.get('token')
+        if (email && verificationToken) {
+            const data = JSON.stringify({ email, verificationToken })
+            console.log(data);
+            fetch('http://localhost:3000/api/auth/verify-email', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: data
+            }).then(response => {
+                console.log(response);
+                return response.json()
+            })
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+    </script>
+</body>
+
+</html>
