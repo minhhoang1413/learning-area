@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sokoban</title>
+    <style>
+        body {
+            background-color: lightsteelblue;
+        }
+        .body {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        img {
+            display: none;
+        }
+
+        #confetti-canvas {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: 850px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .game-button {
+            display: grid;
+            grid-template-columns: 150px 100px 100px;
+            column-gap: 20px;
+
+            background-color: beige;
+
+        }
+
+        .arrow-button {
+            display: grid;
+            grid-template-columns: 50px 50px 50px;
+            grid-template-areas: ". up ."
+                "left down right";
+            gap: 1px;
+        }
+
+        .arrow-button button {
+            width: 50px;
+            height: 50px;
+            background-size: 35px;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+
+        #left-arrow {
+            background-image: url(images/left-arrow.svg);
+            grid-area: left;
+        }
+
+        #right-arrow {
+            background-image: url(images/right-arrow.svg);
+            grid-area: right;
+        }
+
+        #up-arrow {
+            background-image: url(images/up-arrow.svg);
+            grid-area: up;
+        }
+
+        #down-arrow {
+            background-image: url(images/down-arrow.svg);
+            grid-area: down;
+
+        }
+
+        #reset {
+            align-self: center;
+        }
+
+        #back {
+            align-self: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/floor.png" alt="">
+    <img src="images/wall.png" alt="">
+    <img src="images/target.png" alt="">
+    <img src="images/box.png" alt="">
+    <img src="images/robot.png" alt="">
+    <img src="images/done.png" alt="">
+    <img src="images/target_robot.png" alt="">
+    <div id="canvas-div">
+        <canvas id="confetti-canvas">
+        </canvas>
+    </div>
+
+    <div class="body">
+        <canvas id="game-canvas"></canvas>
+        <div class="game-button">
+            <div class="arrow-button">
+                <button type="button" id="left-arrow">
+
+                </button>
+                <button id="up-arrow" type="button">
+
+                </button>
+                <button id="down-arrow" type="button">
+
+                </button>
+                <button id="right-arrow" type="button">
+
+                </button>
+            </div>
+
+            <button type="button" id="back">quay lai</button>
+            <button type="button" id="reset">choi lai</button>
+        </div>
+    </div>
+
+    <script>
+        const map_image = {
+            'floor': 0,
+            'wall': 1,
+            'target': 2,
+            'box': 3,
+            'robot': 4,
+            'done': 5,
+            'target_robot': 6
+        }
+        const images = []
+
+
+        class Sokoban {
+            images;
+            map;
+            height;
+            width;
+            moves;
+            constructor() {
+                this.images = []
+                this.loadImages()
+                this.map = []
+                this.newGame()
+                this.height = this.map.length
+                this.width = this.map[0].length
+                this.scale = this.images[0].width
+                const canvas = document.querySelector('#game-canvas');
+                this.ctx = canvas.getContext('2d');
+
+                this.window_width = canvas.width = this.scale * this.width
+                this.window_height = canvas.height = this.scale * this.height
+                // const width = canvas.width = window.innerWidth;
+                // const height = canvas.height = window.innerHeight;
+                window.addEventListener('keydown', (e) => this.checkEvent(e))
+                document.querySelectorAll('.arrow-button button').forEach(b => {
+                    b.addEventListener('click', (e) => {
+                        this.buttonEvent(e)
+                    })
+                })
+                document.querySelector('#reset').addEventListener('click', () => {
+                    this.newGame()
+                    this.draw()
+                })
+                document.querySelector('#back').addEventListener('click', () => {
+                    // console.log(JSON.parse(JSON.stringify(this.history_moves)));
+                    if (this.history_moves.length === 0) return
+                    this.map = this.history_moves[this.history_moves.length - 1]
+                    this.history_moves = this.history_moves.slice(0, -1)
+                    // this.map = this.history_moves[this.history_moves.length-1]
+                    // console.log(this.map);
+                    this.moves--
+                    this.draw()
+                })
+                this.moves = 0
+                this.history_moves = []
+                this.draw()
+            }
+            loadImages() {
+                document.querySelectorAll('img').forEach(imgEle => {
+                    this.images.push(imgEle)
+                })
+            }
+            newGame() {
+                this.moves = 0
+                this.map = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+                [1, 2, 3, 0, 0, 0, 1, 0, 0, 1, 2, 3, 0, 0, 0, 0, 1],
+                [1, 0, 0, 1, 2, 3, 0, 2, 3, 0, 0, 0, 1, 0, 0, 0, 1],
+                [1, 0, 4, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+
+            }
+
+            findRobot() {
+                for (let y = 0; y < this.height; y++) {
+                    for (let x = 0; x < this.width; x++) {
+                        if (this.map[y][x] === map_image['robot'] || this.map[y][x] === map_image['target_robot']) {
+                            return [y, x]
+                        }
+                    }
+
+                }
+            }
+            draw() {
+                this.ctx.clearRect(0, 0, this.window_width, this.window_height)
+                this.ctx.fillStyle = 'rgb(0,0,0)'
+                this.ctx.fillRect(0, 0, this.window_width, this.window_height - this.scale)
+                for (let y = 0; y < this.height; y++) {
+                    for (let x = 0; x < this.width; x++) {
+                        this.ctx.drawImage(this.images[this.map[y][x]], x * this.scale, y * this.scale)
+                    }
+
+                }
+                this.ctx.font = "30px Arial";
+                this.ctx.fillStyle = "red";
+                this.ctx.textAlign = "center";
+                this.ctx.fillText(`Moves: ${this.moves}`, this.window_width / 2, this.window_height - 10);
+            }
+            move(moveY, moveX) {
+                if (this.gameSolved()) {
+                    return
+                }
+
+                let [robotOldY, robotOldX] = this.findRobot()
+                let robotNewY = robotOldY + moveY
+                let robotNewX = robotOldX + moveX
+                if (this.map[robotNewY][robotNewX] === map_image['wall']) return
+                if (this.map[robotNewY][robotNewX] === map_image['box'] || this.map[robotNewY][robotNewX] === map_image['done']) {
+                    let boxNewY = robotNewY + moveY
+                    let boxNewX = robotNewX + moveX
+                    if (this.map[boxNewY][boxNewX] === map_image['wall'] || this.map[boxNewY][boxNewX] === map_image['box'] || this.map[boxNewY][boxNewX] === map_image['done']) {
+                        return
+                    }
+                    this.history_moves = this.history_moves.concat([this.map.map(row => row.slice())])
+                    this.moves++
+                    this.map[robotNewY][robotNewX] = this.map[robotNewY][robotNewX] == map_image['box'] ? map_image['floor'] : map_image['target']
+                    this.map[boxNewY][boxNewX] = this.map[boxNewY][boxNewX] == map_image['floor'] ? map_image['box'] : map_image['done']
+                    this.map[robotOldY][robotOldX] = this.map[robotOldY][robotOldX] == map_image['robot'] ? map_image['floor'] : map_image['target']
+                    this.map[robotNewY][robotNewX] = this.map[robotNewY][robotNewX] == map_image['floor'] ? map_image['robot'] : map_image['target_robot']
+                } else {
+                    this.history_moves = this.history_moves.concat([this.map.map(row => row.slice())])
+                    this.moves++
+                    this.map[robotOldY][robotOldX] = this.map[robotOldY][robotOldX] == map_image['robot'] ? map_image['floor'] : map_image['target']
+                    this.map[robotNewY][robotNewX] = this.map[robotNewY][robotNewX] == map_image['floor'] ? map_image['robot'] : map_image['target_robot']
+                }
+                
+            }
+            checkEvent(e) {
+                // console.log(this);
+                if (e.key == 'ArrowUp') {
+                    this.move(-1, 0)
+                }
+                if (e.key == 'ArrowDown') {
+                    this.move(1, 0)
+                }
+                if (e.key == 'ArrowLeft') {
+                    this.move(0, -1)
+                }
+                if (e.key == 'ArrowRight') {
+                    this.move(0, 1)
+                }
+                this.draw()
+            }
+            buttonEvent(e) {
+                // console.log(this.map);
+                if (e.target.id == 'up-arrow') {
+                    this.move(-1, 0)
+                }
+                if (e.target.id == 'down-arrow') {
+                    this.move(1, 0)
+                }
+                if (e.target.id == 'left-arrow') {
+                    this.move(0, -1)
+                }
+                if (e.target.id == 'right-arrow') {
+                    this.move(0, 1)
+                }
+                this.draw()
+            }
+            gameSolved() {
+                for (let y = 0; y < this.height; y++) {
+                    for (let x = 0; x < this.width; x++) {
+                        if (this.map[y][x] === map_image['target'] || this.map[y][x] === map_image['target_robot']) {
+                            return false
+                        }
+                    }
+
+                }
+                return true
+            }
+        }
+        let sokoban;
+        window.addEventListener('load', (event) => {
+            sokoban = new Sokoban()
+        });
+    </script>
+</body>
+
+</html>
