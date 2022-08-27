@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    color:  darkblue;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    border-radius: 0 1em 0 1em;
+}
+h2 {
+    margin-bottom: 1.5rem;
+}
+p {
+    margin-bottom: .5rem;
+}
+header {
+    background: url(img/flowerbkgd.png) center/contain ;
+}
+header img {
+    max-height: 150px;
+}
+nav {
+    background-color: darkseagreen;
+}
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+nav ul li {
+    flex: 1 0 6rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 1rem; */
+}
+nav a {
+    /* display: block; */
+    flex: 1;
+    padding: 1rem;
+    color: white;
+}
+nav a:hover{
+    background-color: cadetblue;
+}
+.button {
+    background-color: orchid;
+    color: white;
+    padding: 0.5rem;
+    display: inline-block;
+    border-radius: 0 1em 0 1em;
+    font-weight: bold;
+    border: none;
+}
+.button:hover {
+    background-color: blueviolet;
+}
+
+.news,
+.blogs {
+    border: 1px solid black;
+    border-radius: 0 1em 0 1em;
+    overflow: hidden;
+}
+.news h3,
+.blogs h3 {
+    background-color: aliceblue;
+    border-bottom: 5px dotted cadetblue;
+    padding: 0.5rem;
+    font-weight: normal;
+    text-transform: lowercase;
+    margin-top: 0;
+}
+.blogs ul {
+    list-style-type: disc;
+    margin: 1rem 1rem;
+    padding: 1rem;
+}
+.blogs ul li {
+    color: cadetblue;
+    margin-bottom: 0.5rem;
+}
+.blogs ul li:last-of-type{
+    margin-bottom: 0;
+}
+.blogs a:hover {
+    color: coral;
+}
+.news p,
+.blogs p {
+    padding: 1rem;
+}
+
+aside h3 {
+    margin: 1rem 0;
+}
+footer {
+    background: url(img/flowerbkgd.png) center no-repeat ;
+    background-size: cover;
+    text-align: center;
+    padding: 2rem;
+}
+footer small {
+    display: block;
+    text-align: justify;
+    padding-top: 2rem;
+}
+
+.content {
+    margin: 2rem 1rem;
+}
+aside,
+main {
+    margin-bottom: 3rem;
+}
+
+
+@media screen and (min-width: 600px) {
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 550px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    main {
+        grid-column: span 2;
+        margin-bottom: 0;
+    }
+    aside {
+        margin-bottom: 0;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .content {
+        grid-template-columns: 1fr 1fr 1fr;
+        max-width: 900px;
+    }
+    main {
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+}
