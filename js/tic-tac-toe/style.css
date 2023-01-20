@@ -1,0 +1,37 @@
+body {
+    text-align: center;
+}
+.container {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    border: 1px solid gray;
+
+}
+
+.field {
+    border: 1px solid gray;
+    cursor: pointer;
+    font-size: 70px;
+    text-align: center;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+[data-field-type="X"] {
+    color: slategrey;
+    background-color: whitesmoke;
+}
+
+[data-field-type="O"] {
+    color: crimson;
+    background-color: whitesmoke;
+}
+
+.field:hover {
+    background-color: aliceblue;
+}
+
+button {
+    padding: 0.5rem 1rem;
+}
