@@ -1,0 +1,40 @@
+header {
+    background-color: goldenrod;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: lightgray;
+}
+
+.logo {
+    font-size: 2rem;
+    font-family: cursive;
+    padding: 0.5rem 0;
+    color: white;
+}
+
+.link {
+    display: inline-block;
+    font-size: 1.125rem;
+    letter-spacing: 1px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+.link.active {
+    color: white;
+}
+
+.link:hover {
+    background-color: darkgray;
+}

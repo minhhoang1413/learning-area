@@ -1,0 +1,50 @@
+.menu-section {
+    background-color: lemonchiffon;
+    padding-top: 5rem;
+}
+.menu-section h1 {
+    text-align: center;
+    font-size: 6rem;
+    color: goldenrod;
+    margin-bottom: 5rem;
+    position: relative;
+}
+.menu-section h1::after{
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: goldenrod;
+    width: 120px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.menu-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: palegoldenrod;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem 1rem;
+}
+.item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
+}
+.item img {
+    width: 100%;
+    grid-row: span 2;
+}
+.item p {
+    max-width: 300px;
+    font-size: 1.25rem;
+}
+.item p:first-of-type{
+    align-self: end;
+    border-bottom: 5px dotted black ;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.25rem;
+}

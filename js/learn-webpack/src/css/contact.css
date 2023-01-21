@@ -1,0 +1,40 @@
+.contact-section {
+    background-color: lemonchiffon;
+    padding-top: 5rem;
+}
+.contact-section h1 {
+    text-align: center;
+    font-size: 4rem;
+    color: goldenrod;
+    margin-bottom: 4rem;
+    position: relative;
+}
+.contact-section h1::after{
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: goldenrod;
+    width: 220px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.contact-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: palegoldenrod;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 5rem 1rem;
+}
+.contact-wrapper p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.contact-wrapper p img {
+    width: 2rem;
+}
