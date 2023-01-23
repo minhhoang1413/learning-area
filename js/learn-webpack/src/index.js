@@ -26,10 +26,10 @@ root.addEventListener('click', e => {
     if (e.target.id === 'home-page') {
         changeActivePage(e.target, homePage)
     }
-    if (e.target.id === 'menu-page') {
+    else if (e.target.id === 'menu-page') {
         changeActivePage(e.target, menuPage)
     }
-    if (e.target.id === 'contact-page') {
+    else if (e.target.id === 'contact-page') {
         changeActivePage(e.target, contactPage)
     }
 })

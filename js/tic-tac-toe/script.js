@@ -17,6 +17,7 @@ const gameboard = (function () {
         return true
     }
     function canSetField(index) {
+        index = Number(index)
         return !board[index]
     }
     function resetField() {
@@ -74,51 +75,29 @@ const gameboard = (function () {
     }
     return { canSetField, getField, setField, resetField, checkWinSign }
 })()
-const displayController = (function () {
-    const allFields = document.querySelectorAll('.field')
-    const messageEle = document.querySelector('#message')
-
-    function addFieldListener(cb) {
-        allFields.forEach(ele => ele.addEventListener('click', cb))
-    }
-    function resetGameboard() {
-        for (let i = 0; i < allFields.length; i++) {
-            setGameboardField(i, null)
-        }
-    }
-    function setGameboardField(index, value) {
-        allFields[index].textContent = value
-        allFields[index].dataset.fieldType = value
-    }
-    function displayMessage(str) {
-        messageEle.textContent = str
-    }
-    return { setGameboardField, resetGameboard, displayMessage, addFieldListener }
-})()
-
-const game = (function () {
+const gameController = (function () {
     let round = 0
     const playerX = createPlayer('X')
     const playerO = createPlayer('O')
-    let playerWin
+    let playerWin = null
     let isFinish = false
 
-    document.querySelector('#restart-btn').addEventListener('click', restart)
-    displayController.addFieldListener(playRound)
-
+    function getIsFinish() {
+        return isFinish
+    }
+    function getPlayerWin() {
+        return playerWin
+    }
     function getPlayerTurn() {
         return (round % 2 === 0 ? playerX : playerO)
     }
-    function playRound(event) {
+    function playRound(fieldIndex) {
         if (isFinish) {
             return
         }
-        const fieldIndex = event.target.dataset.field
         if (gameboard.canSetField(fieldIndex)) {
             gameboard.setField(fieldIndex, getPlayerTurn().getSign())
-            displayController.setGameboardField(fieldIndex, getPlayerTurn().getSign())
             round++
-            displayController.displayMessage(getPlayerTurn().getSign() + ' turn')
             checkIsFinish()
         }
     }
@@ -126,18 +105,57 @@ const game = (function () {
         playerWin = gameboard.checkWinSign()
         if (playerWin) {
             isFinish = true
-            displayController.displayMessage(playerWin + ' win')
         } else if (round === 9) {
             isFinish = true
-            displayController.displayMessage('Draw')
         }
     }
     function restart() {
         gameboard.resetField()
-        displayController.resetGameboard()
         round = 0
         isFinish = false
-        displayController.displayMessage(getPlayerTurn().getSign() + ' turn')
+        playerWin = null
     }
-    restart()
-})()
+    return { restart, playRound, getPlayerTurn, getIsFinish, getPlayerWin }
+})
+const displayController = (function () {
+    const game = gameController()
+    const allFields = document.querySelectorAll('.field')
+    const messageEle = document.querySelector('#message')
+
+    document.querySelector('#restart-btn').addEventListener('click', resetDisplay)
+    allFields.forEach(ele => ele.addEventListener('click', handleClickField))
+    displayMessage(game.getPlayerTurn().getSign() + ' turn')
+    function handleClickField(e) {
+        if (e.target.textContent) {
+            return
+        }
+        const index = Number(e.target.dataset.field)
+        game.playRound(index)
+        updateDisplay()
+    }
+    function updateDisplay() {
+        for (let i = 0; i < allFields.length; i++) {
+            setGameboardField(i, gameboard.getField(i))
+        }
+        if (game.getIsFinish()) {
+            if (game.getPlayerWin()) {
+                displayMessage(game.getPlayerWin() + ' win')
+            } else {
+                displayMessage('draw')
+            }
+        } else {
+            displayMessage(game.getPlayerTurn().getSign() + ' turn')
+        }
+    }
+    function resetDisplay() {
+        game.restart()
+        updateDisplay()
+    }
+    function setGameboardField(index, value) {
+        allFields[index].textContent = value
+        allFields[index].dataset.fieldType = "field-" + value
+    }
+    function displayMessage(str) {
+        messageEle.textContent = str
+    }
+})() 
