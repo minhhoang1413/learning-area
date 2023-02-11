@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/index.js" type="module"></script>
+</head>
+
+<body>
+    <h1 class="title">Stuff I need to do</h1>
+    <div class="all-tasks">
+        <h2 class="task-list-title">My lists</h2>
+        <ul id="project-list" class="task-list">
+            <!-- <li class="list-name active-list">Work</li>
+            <li class="list-name">Learn</li> -->
+        </ul>
+        <form id="new-project-form" action="" class="new-list-form">
+            <input id="new-project-input" type="text" class="new-list new-input" placeholder="new list name"
+                aria-label="new list name">
+            <button class="btn create">+</button>
+        </form>
+    </div>
+    <div id="project-task" class="todo-list">
+        <div class="todo-header">
+            <h2 id="project-name" class="todo-title"></h2>
+            <div>
+                <p id="task-count" class="todo-task-count"></p>
+                <p id="task-count-uncomplete" class="todo-task-count"></p>
+            </div>
+        </div>
+        <div class="todo-body">
+            <div id="tasks-sort" class="tasks-sort">
+                <label for="select-tasks-sort">Sort by</label>
+                <select id="select-tasks-sort">
+                    <option value="" disabled selected>Choose</option>
+                    <option value="priority">Priority</option>
+                    <option value="date">Date</option>
+                </select>
+            </div>
+            <div id="tasks-filter">
+                <fieldset>
+                    <legend>Filter tasks</legend>
+                    <div class="">
+                        <label for="filter-task-input">Title</label>
+                        <input id="filter-task-input" type="text" class="">
+                    </div>
+                    <div>
+                        <label for="filter-task-done">Done</label>
+                        <select id="filter-task-done">
+                            <optgroup>
+                                <option value="" selected>None</option>
+                            </optgroup>
+                            <optgroup>
+                                <option value="true">Done</option>
+                                <option value="false">Not Done</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-task-priority">Priority</label>
+                        <select id="filter-task-priority">
+                            <optgroup>
+                                <option value="" selected>None</option>
+                            </optgroup>
+                            <optgroup>
+                                <option value="0">Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-task-date">Date</label>
+                        <input type="date" id="filter-task-date">
+                    </div>
+                    <button id="filter-task-btn" class="">Filter</button>
+                </fieldset>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Done</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody id="tasks">
+
+                </tbody>
+            </table>
+            <div class="new-task-creator">
+                <form id="new-task-form" class="new-task-form">
+                    <fieldset>
+                        <legend>Create task</legend>
+                        <div class="span-2">
+                            <label for="new-task-input">Title</label>
+                            <input id="new-task-input" type="text" class="new-task new-input"
+                                placeholder="new task name">
+                        </div>
+                        <div>
+                            <label for="new-task-priority">Priority</label>
+                            <select id="new-task-priority">
+                                <option value="0">Low</option>
+                                <option value="1">Medium</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="new-task-date">Date</label>
+                            <input type="date" id="new-task-date">
+                        </div>
+                        <button class="">Create</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="delete-buttons">
+                <button id="delete-completed-tasks-btn" class="btn delete delete-complete-task">Clear completed
+                    tasks</button>
+                <button id="delete-project-btn" class="btn delete delete-list">Delete list</button>
+            </div>
+        </div>
+    </div>
+    <template id="task-template">
+        <div class="task">
+            <input type="checkbox">
+            <label></label>
+        </div>
+    </template>
+</body>
+
+</html>

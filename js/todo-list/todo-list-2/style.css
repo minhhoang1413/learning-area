@@ -1,0 +1,200 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: cadetblue;
+    color: white;
+    display: grid;
+    font-size: 1.5rem;
+    font-weight: 300;
+    grid-template-columns: 1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+    grid-template-areas:
+        "header header header header"
+        ". list active .";
+}
+
+.title {
+    grid-area: header;
+    text-align: center;
+    font-size: calc(7vw + 2rem);
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.1);
+    margin: -0.3em 0 0.5em;
+}
+
+.all-tasks {
+    grid-area: list;
+}
+
+.task-list {
+    line-height: 1.7;
+    font-size: 1.2rem;
+    list-style-type: circle;
+    padding-left: 1.1em;
+    margin: 1rem 0;
+}
+
+.active-list {
+    font-weight: 700;
+}
+
+.list-name:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn {
+    cursor: pointer;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+}
+
+.btn.create {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: 0.25em;
+}
+
+.btn.create:hover {
+    opacity: 0.7;
+}
+
+.new-input {
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+    font-size: inherit;
+    border-bottom: 1px solid currentColor;
+    outline: none;
+    order: 2;
+    padding: 0.25em;
+}
+
+.new-list {
+    font-size: 1.1rem;
+}
+
+.new-input:focus {
+    border-bottom-width: 3px;
+}
+
+.new-input::placeholder {
+    color: inherit;
+    opacity: 0.4;
+}
+
+.new-input:focus::placeholder {
+
+    opacity: 0.2;
+}
+
+.todo-list {
+    --spacer: 2rem;
+    grid-area: active;
+    align-self: flex-start;
+    background-color: ivory;
+    color: darkslategray;
+}
+.hidden {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+.todo-header {
+    padding: var(--spacer);
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.todo-task-count {
+    font-size: 1rem;
+}
+
+.todo-body {
+    padding: var(--spacer);
+    position: relative;
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -35px;
+    color: white;
+    opacity: 0.8;
+    font-size: 1rem;
+}
+
+.delete {
+    font-size: inherit;
+}
+
+.delete:hover {
+    color: crimson;
+}
+
+.task-sort {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.span-2 {
+    flex: 0 0 100%;
+}
+
+fieldset label {
+    font-size: 1rem;
+}
+
+fieldset button {
+    width: 200px;
+}
+
+fieldset div {
+    flex: 0 0 50%;
+
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-spacing: 0px;
+}
+
+th,
+td {
+    border-bottom: 1px solid black;
+}
+
+td > label {
+    display: block;
+    cursor: pointer;
+}
+tr:has(input:checked) {
+    text-decoration: line-through;
+}
