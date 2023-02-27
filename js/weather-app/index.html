@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.svg" alt="">
+            Open Weather
+        </div>
+        <form>
+            <input placeholder="enter city name" type="search" id="search"><button>Search</button>
+        </form>
+        <select id="unit-select">
+            <option value="metric">&#8451;</option>
+            <option value="imperial">&#8457;</option>
+        </select>
+    </header>
+    <div id="message">
+
+    </div>
+    <main id="main-container">
+
+        <section class="current">
+            <h2>current weather <span id="place"></span></h2>
+            <p id="current-time"></p>
+            <div class="current-wrapper-top">
+                <div id="current-icons" class="current-icons">
+                    <!-- <img src="./images/01d.svg" alt="" class="icon"> -->
+                </div>
+                <div>
+                    <div class="temp-c">
+                        <span id="current-temp-c"></span><sup>&#8451;</sup>
+                    </div>
+                    <div class="temp-f">
+                        <span id="current-temp-f"></span><sup>&#8457;</sup>
+                    </div>
+                </div>
+                <div>
+                    <div id="current-description"></div>
+                    <div>
+                        <span class="item-header">feels like</span>
+                        <span class="temp-c">
+                            <span id="current-feels-temp-c"></span><sup>&#8451;</sup>
+                        </span>
+                        <span class="temp-f">
+                            <span id="current-feels-temp-f"></span><sup>&#8457;</sup>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <ul class="current-wrapper-bottom">
+                <li>
+                    <span class="item-header">wind</span>
+                    <div><img id="current-wind-arrow" src="./images/wind-stream.svg" alt="" /><span
+                            id="current-wind"></span> m/s</div>
+                </li>
+
+                <li>
+                    <span class="item-header">humidity</span>
+                    <span><span id="current-humidity"></span>%</span>
+                </li>
+                <li>
+                    <span class="item-header">visibility</span>
+                    <span><span id="current-visibility"></span> km</span>
+                </li>
+                <li>
+                    <span class="item-header">pressure</span>
+                    <span><span id="current-pressure"></span> hpa</span>
+                </li>
+                <li>
+                    <span class="item-header">clouds</span>
+                    <span><span id="current-clouds"></span>%</span>
+                </li>
+                <li>
+                    <span class="item-header">rain</span>
+                    <span><span id="current-rain"></span> mm</span>
+                </li>
+                <li>
+                    <span class="item-header">snow</span>
+                    <span><span id="current-snow"></span> mm</span>
+                </li>
+            </ul>
+        </section>
+        <section class="forecast">
+            <h2>forecast</h2>
+            <ul id="tab-header" class="tab-header">
+                <!-- <li class="tab-header-item active">tab1</li> -->
+            </ul>
+            <div id="tab-content" class="tab-content">
+                <!-- <ul class="tab-panel">
+                    <li class="tab-item">
+                        <div class="forecast-icons">
+                            <img class="icon" src="./images/01d.svg" alt="">
+                            <img class="icon" src="./images/01d.svg" alt="">
+                            <img class="icon" src="./images/02d.svg" alt="">
+                        </div>
+                        <div>21 oC</div>
+                        <div>description</div>
+                        <div>rain</div>
+                        <div>wind</div>
+                    </li>
+                </ul> -->
+            </div>
+        </section>
+    </main>
+    <div id="loading-container" class="loading-container">
+        <div id="loading" class="loading"></div>
+    </div>
+
+</body>
+
+</html>
