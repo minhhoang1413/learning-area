@@ -1,0 +1,66 @@
+body {
+    background-color: aliceblue;
+}
+
+section {
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    row-gap: 50px;
+    margin-bottom: 20px;
+}
+
+.container>div {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+th {
+    background-color: beige;
+}
+
+td {
+    background-color: cornsilk;
+    color: white;
+}
+
+.ship,
+tr.ship td {
+    background-color: cadetblue;
+}
+
+.hidden .ship {
+    background-color: cornsilk;
+}
+
+
+.hit,
+tr.hit td {
+    background-color: crimson !important;
+
+}
+
+.miss {
+    background-color: darkgray;
+
+}
