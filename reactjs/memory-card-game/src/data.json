@@ -1,0 +1,110 @@
+[
+    {
+        "src": "./images/apple-pie.svg",
+        "text": "apple pie"
+    },
+    {
+        "src": "./images/beer.svg",
+        "text": "beer"
+    },
+    {
+        "src": "./images/bread.svg",
+        "text": "bread"
+    },
+    {
+        "src": "./images/cake.svg",
+        "text": "cake"
+    },
+    {
+        "src": "./images/cheese.svg",
+        "text": "cheese"
+    },
+    {
+        "src": "./images/chicken.svg",
+        "text": "chicken"
+    },
+    {
+        "src": "./images/soda.svg",
+        "text": "soda"
+    },
+    {
+        "src": "./images/cookies.svg",
+        "text": "cookies"
+    },
+    {
+        "src": "./images/donut.svg",
+        "text": "donut"
+    },
+    {
+        "src": "./images/drumstick.svg",
+        "text": "drumstick"
+    },
+    {
+        "src": "./images/fish.svg",
+        "text": "fish"
+    },
+    {
+        "src": "./images/fried-egg.svg",
+        "text": "fried egg"
+    },
+    {
+        "src": "./images/fries.svg",
+        "text": "fries"
+    },
+    {
+        "src": "./images/hamburger.svg",
+        "text": "hamburger"
+    },
+    {
+        "src": "./images/honey.svg",
+        "text": "honey"
+    },
+    {
+        "src": "./images/ice-cream.svg",
+        "text": "ice cream"
+    },
+    {
+        "src": "./images/juice.svg",
+        "text": "juice"
+    },
+    {
+        "src": "./images/noodle.svg",
+        "text": "noodle"
+    },
+    {
+        "src": "./images/pizza-slice.svg",
+        "text": "pizza slice"
+    },
+    {
+        "src": "./images/pizza.svg",
+        "text": "pizza"
+    },
+    {
+        "src": "./images/porridge.svg",
+        "text": "porridge"
+    },
+    {
+        "src": "./images/pudding.svg",
+        "text": "pudding"
+    },
+    {
+        "src": "./images/rice.svg",
+        "text": "rice"
+    },
+    {
+        "src": "./images/sliced-bread.svg",
+        "text": "sliced bread"
+    },
+    {
+        "src": "./images/spaghetti.svg",
+        "text": "spaghetti"
+    },
+    {
+        "src": "./images/sushi.svg",
+        "text": "sushi"
+    },
+    {
+        "src": "./images/taco.svg",
+        "text": "taco"
+    }
+]
