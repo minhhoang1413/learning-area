@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: coral;
+}
+
+button {
+    font-size: 100%;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+}
+
+button:disabled {
+    cursor: default;
+    background-color: grey;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.app>section {
+    max-width: 1000px;
+    align-self: center;
+}
+
+.navbar {
+    background-color: darkseagreen;
+    color: whitesmoke;
+}
+
+.navbar-center {
+    display: flex;
+    max-width: 1000px;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 1rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.25rem;
+}
+
+.nav-link-cart button {
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+}
+
+.nav-link-cart button img {
+    width: 2rem;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    display: none;
+}
+
+.sidebar.open {
+    display: block;
+}
+
+.sidebar-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 0.5rem;
+}
+
+.close-btn {
+    font-size: 1.5rem;
+    padding: 0.25rem 0.75rem;
+}
+
+.home {
+    flex: 1;
+    align-self: center;
+    background: url(./icons/hero.svg) center no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.button {
+    background-color: darkseagreen;
+    padding: 1rem 2rem;
+    color: whitesmoke;
+    border: 0;
+    margin-bottom: 0.5rem;
+
+}
+
+.button:hover {
+    background-color: darkolivegreen;
+}
+
+.button:disabled {
+    background-color: gainsboro;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-items: end;
+}
+
+.product {
+    border: 1px solid cadetblue;
+    text-align: center;
+    text-transform: capitalize;
+    background-color: azure;
+}
+
+.product-detail {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    align-items: center;
+}
+
+.product-detail>div>* {
+    margin-bottom: 0.5rem;
+}
+
+
+.group-change-amount {
+    display: grid;
+    grid-template-columns: repeat(3, 2rem);
+    grid-template-rows: 2rem;
+    font-size: 1.5rem;
+}
+
+.group-change-amount button {
+    padding: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.out-of-stock {
+    background-color: crimson;
+    color: white;
+    padding: 0.5rem;
+}
+
+.title {
+    font-weight: 900;
+}
