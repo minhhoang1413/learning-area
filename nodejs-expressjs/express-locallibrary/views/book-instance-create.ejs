@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        
+        <form action="" method="post">
+            <div>
+                <label for="book">book</label>
+                <select name="book" id="book">
+                    <% books.forEach(book => {  %>
+                        <option <%= old?.book === book.id ? 'selected' : '' %> value="<%= book.id %>"><%= book.title %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div>
+                <label for="imprint">imprint</label>
+                <input value="<%= old?.imprint %>" type="text" name="imprint" id="imprint">
+            </div>
+            <div>
+                <label for="status">status</label>
+                <select name="status" id="status">
+                    <option value="Available">Available</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Loaned">Loaned</option>
+                    <option value="Reserved">Reserved</option>
+                </select>
+            </div>
+            <div>
+                <label for="due_back">Date when book available</label>
+                <input type="date" name="due_back" id="due_back">
+            </div>
+            <button type="submit">submit</button>
+        </form>
+        <p><%= error %></p>
+    </body>
+
+</html>

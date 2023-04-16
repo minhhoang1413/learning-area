@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        <p>imprint: <%= bookInstance.imprint %> </p>
+        <p>status: <%= bookInstance.status %> </p>
+        <p>
+            <%= bookInstance.due_back ? `Due: ${(new Date(bookInstance.due_back)).toDateString()}`:""   %>
+        </p>
+    </body>
+
+</html>

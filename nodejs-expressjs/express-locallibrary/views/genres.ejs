@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        <ul>
+            <% genres.forEach(genre => { %>
+                <li> 
+                    <a href="<%= genre.url %>">
+                        <%= genre.name %> 
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </body>
+
+</html>

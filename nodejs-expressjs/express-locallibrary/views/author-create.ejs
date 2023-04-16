@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        
+        <form action="" method="post">
+            <div>
+                <label for="fname">First Name</label>
+                <input value="<%= old?.first_name %>" type="text" name="first_name" id="fname">
+            </div>
+            <div>
+                <label for="lname">Last Name</label>
+                <input value="<%= old?.last_name %>" type="text" name="last_name" id="lname">
+            </div>
+            <div>
+                <label for="birth">Date of birth</label>
+                <input value="<%= old?.date_of_birth %>" type="date" name="date_of_birth" id="birth">
+            </div>
+            <div>
+                <label for="death">Date of death</label>
+                <input value="<%= old?.date_of_death %>" type="date" name="date_of_death" id="death">
+            </div>
+            <button type="submit">submit</button>
+        </form>
+        <p><%= error %></p>
+    </body>
+
+</html>

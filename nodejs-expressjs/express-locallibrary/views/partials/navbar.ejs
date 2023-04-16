@@ -1,0 +1,24 @@
+<nav>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/books">all books</a></li>
+        <li><a href="/authors">all authors</a></li>
+        <li><a href="/genres">all genres</a></li>
+        <li><a href="/bookinstances">all book-instances</a></li>
+
+        <% if(typeof user != "undefined" ){ %>
+            <li><a href="/genres/create">create genre</a></li>
+            <li><a href="/authors/create">create author</a></li>
+            <li><a href="/books/create">create book</a></li>
+            <li><a href="/bookinstances/create">create book instance</a></li>
+            <li>
+                <%= user.username %> /
+                <a href="/auth/logout">logout</a>
+            </li>
+        <% } else { %>
+                <li><a href="/auth/login">login</a> /
+                    <a href="/auth/register">register</a>
+                </li>      
+        <% } %>
+    </ul>
+</nav>

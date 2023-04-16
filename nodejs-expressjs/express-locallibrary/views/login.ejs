@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        <form action="" method="post">
+            <div>
+                <label for="username">username</label>
+                <input value="<%= old?.username %>" type="text" name="username" id="username">
+            </div>
+            <div>
+                <label for="password">password</label>
+                <input value="<%= old?.password %>" type="password" name="password" id="password">
+            </div>
+            <button type="submit">submit</button>
+            <p><%= error %></p>
+        </form>
+    </body>
+
+</html>

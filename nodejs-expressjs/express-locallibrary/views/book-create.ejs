@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        
+        <form action="" method="post">
+            <div>
+                <label for="title">title</label>
+                <input value="<%= old?.title %>" type="text" name="title" id="title">
+            </div>
+            <fieldset>
+                <legend>Genre</legend>
+                <% genres.forEach(genre => {  %>
+                    <label>
+                        <%= genre.name %>
+                        <input <%= old?.genre.includes(genre.id) ? 'checked' : '' %> type="checkbox" name="genre" value="<%= genre.id %>">
+                    </label>
+                <% }) %>
+            </fieldset>
+            <div>
+                <label for="author">author</label>
+                <select name="author" id="author">
+                    <% authors.forEach(author => {  %>
+                        <option <%= old?.author === author.id ? 'selected' : '' %> value="<%= author.id %>"><%= author.fullname %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div>
+                <label for="isbn">isbn</label>
+                <input value="<%= old?.isbn %>" type="text" name="isbn" id="isbn">
+            </div>
+            <div>
+                <label for="summary">summary</label>
+                <textarea name="summary" id="summary" cols="30" rows="10"><%= old?.summary %></textarea>
+            </div>
+            <button type="submit">submit</button>
+        </form>
+        <p><%= error %></p>
+    </body>
+
+</html>

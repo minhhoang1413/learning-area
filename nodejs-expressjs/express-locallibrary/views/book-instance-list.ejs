@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head',{title }) %>
+
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <ul>
+            <% bookInstances.forEach(bookInstance=> { %>
+                <li>
+                    <a href="<%= bookInstance.url %>">
+                        <%= `${bookInstance.book.title} (${bookInstance.imprint})` %>
+                    </a>
+                    - <%= bookInstance.status %>
+                    <%= bookInstance.due_back ? `(Due: ${new Date(bookInstance.due_back).toDateString()})` : "" %>
+                </li>
+            <% }) %>
+        </ul>
+    </body>
+
+</html>

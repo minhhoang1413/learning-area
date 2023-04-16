@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        <p><%= author.date %></p>
+
+        <h3>Books</h3>
+        <ul>
+            <% books.forEach(book => { %>
+                <li> 
+                    <a href="<%= book.url %>">
+                        <%= book.title %> 
+                    </a>
+                    <p> <%= book.summary %> </p>
+                </li>
+            <% }) %>
+
+        </ul>
+
+        <a href="<%= `${author.url}/delete` %>">delete author</a>
+    </body>
+
+</html>

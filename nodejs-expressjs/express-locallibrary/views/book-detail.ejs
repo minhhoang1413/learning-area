@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head',{title }) %>
+    <body>
+        <%- include('./partials/navbar') %>
+        <h1>
+            <%= title %>
+        </h1>
+        <p>author: <a href="<%= book.author.url %>"><%= book.author.fullname %> </a> </p>
+        <p>summary: <%= book.summary %></p>
+        <p>isbn: <%= book.isbn %></p>
+        <p>genres: 
+            <% book.genre.forEach(genre => { %>
+                <a href="<%=genre.url %>"> <%= genre.name %></a>
+            <% })%>
+        </p>
+        <a href="<%= book.url + '/update' %>">update book</a>
+        <h3>Copies</h3>
+        <ul>
+            <% bookinstances.forEach(bookInstance => { %>
+                <li> 
+                    <a href="<%= bookInstance.url %>">
+                        <p>
+                            <%= bookInstance.status %> 
+                        </p> 
+                        <p>Imprint: <%= bookInstance.imprint %></p>
+                        <% if(bookInstance.due_back){ %>
+                            <p>Due: <%=bookInstance.due_back  %></p>
+                        <% } %>
+                    </a>
+                </li>
+            <% }) %>
+
+        </ul>
+    </body>
+
+</html>
